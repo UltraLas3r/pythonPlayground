@@ -1,4 +1,6 @@
 import random
+
+import snakeGame
 import trickycounter
 
 
@@ -8,7 +10,7 @@ def hello_world(text: str) -> None:
 
 def main() -> None:
     # trickycounter.tricky_counter_method()
-    hello_world("this is just a cool new thing")
+   snakeGame.snek()
 
 
 if __name__ == '__main__':
