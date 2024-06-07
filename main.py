@@ -2,6 +2,7 @@ import random
 
 import snakeGame
 import trickycounter
+from bank_program import bank_program
 
 
 def hello_world(text: str) -> None:
@@ -10,11 +11,13 @@ def hello_world(text: str) -> None:
 
 def main() -> None:
     # trickycounter.tricky_counter_method()
-   snakeGame.snek()
+   # snakeGame.snek()
+   bank_program()
 
 
 if __name__ == '__main__':
     main()
+
 
 # #
 # # for i in {1, 2, 3, 4, 5}:
