@@ -1,59 +1,85 @@
 import os
+from accountdb import AccessDB
 
 
-def bank_program():
-    def show_balance():
-        pass
-        print(f"you have ${balance} available")
-        # print("Would you like to make a withdrawal?")
-        # balance_screen_choice = input("Choose 1 for YES, 2 for NO, go back to main menu")
-        #
-        # if balance_screen_choice == '1':
-        #     amount_withdrawn = input("How much would you like?: ")
-        #     new_balance = balance - amount_withdrawn
-        # elif balance_screen_choice == '2':
-        #     os.system('cls')
-        #     is_running == True
+class MyBank:
+    balance = 15
+    is_running = True
+    mainMenu = ''
+
+    # if input() == "p":
+    #     print({balance})
+
+    def show_balance(self):
+        print(f"you have ${self.balance} available")
+        mainMenu = input("Return to main menu? y or n")
+
+        if mainMenu == "y":
+            self.mainSplash()
+        else:
+            self.show_balance()
+
         # else:
         #     print ("That is an invalid choice")
 
-    def deposit():
-        # deposit_amount = int(input("Enter amount to deposit: "))
-        # if deposit_amount > 0:
-        #     balance += deposit_amount
-        pass
+    def deposit(self):
+        deposit_amount = int(input("Enter amount to deposit: "))
+        if deposit_amount > 0:
+            self.balance += deposit_amount
+            print("Your new balance is %s" % self.balance)
 
-    def withdraw():
-        pass
+            mainMenu = input("Return to main menu? y or n")
+            if mainMenu == "y":
+                self.mainSplash()
+            else:
+                self.deposit()
 
-    new_balance = 0
-    balance: int = 0
-    is_running = True
+    def withdraw(self):
+        if self.balance >= 0:
+            withdrawFunds = input(f"You have {self.balance} would you like to withdrawal funds? y or n")
+            if withdrawFunds == "y":
+                withdraw_amount = int(input("Enter amount to withdrawal: "))
+                if self.balance - withdraw_amount >= 0:
+                    self.balance -= withdraw_amount
+                    print(f"Your new balance is {self.balance}")
+                    mainMenu = input("Return to main menu? y or n: ")
+                else:
+                    print("You cannot withdraw more than you have")
 
-    while is_running:
-        print("Banking Program")
+            else:
+                print("please enter a proper input value")
+                self.withdraw()
+
+            if mainMenu == "y":
+                self.mainSplash()
+            else:
+                self.withdraw()
+
+    def mainSplash(self):
+        print("~~~~~> Banking Program <~~~~~~")
         print("1. Show Balance")
         print("2. Deposit")
         print("3. Withdraw")
         print("4. Exit")
+        print("5. access db")
 
         choice = input("Enter your choice (1-4): ")
 
         if choice == '1':
-            show_balance()
+            self.show_balance()
 
         elif choice == '2':
-            deposit()
+            self.deposit()
 
         elif choice == '3':
-            withdraw()
+            self.withdraw()
 
         elif choice == '4':
             os.system('cls')
             is_running = False
 
+        elif choice == '5':
+            AccessDB()
+
         else:
             print("That is an invalid choice")
-
-
-print("Thank you. Have a nice day!")
