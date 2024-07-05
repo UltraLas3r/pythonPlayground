@@ -1,10 +1,6 @@
 from BankApplication.bank_program import MyBank
 
-
-
-
 def main():
-#   trickycounter.tricky_counter_method()
 
 
 if __name__ == '__main__':
