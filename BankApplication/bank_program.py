@@ -1,5 +1,5 @@
 import os
-from accountdb import AccessDB
+from BankApplication.accountdb import AccessDB
 
 
 class MyBank:
@@ -16,11 +16,10 @@ class MyBank:
 
         if mainMenu == "y":
             self.mainSplash()
-        else:
+        elif mainMenu == "n":
             self.show_balance()
-
-        # else:
-        #     print ("That is an invalid choice")
+        else:
+            print("That is an invalid choice")
 
     def deposit(self):
         deposit_amount = int(input("Enter amount to deposit: "))
@@ -42,7 +41,7 @@ class MyBank:
                 if self.balance - withdraw_amount >= 0:
                     self.balance -= withdraw_amount
                     print(f"Your new balance is {self.balance}")
-                    mainMenu = input("Return to main menu? y or n: ")
+                    main_menu = input("Return to main menu? y or n: ")
                 else:
                     print("You cannot withdraw more than you have")
 
@@ -50,7 +49,7 @@ class MyBank:
                 print("please enter a proper input value")
                 self.withdraw()
 
-            if mainMenu == "y":
+            if main_menu == "y":
                 self.mainSplash()
             else:
                 self.withdraw()
@@ -79,7 +78,8 @@ class MyBank:
             is_running = False
 
         elif choice == '5':
-            AccessDB()
+            # AccessDB().get_info('account')
+           AccessDB().get_info('balance')
 
         else:
             print("That is an invalid choice")

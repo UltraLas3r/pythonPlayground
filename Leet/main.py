@@ -1,17 +1,10 @@
-import random
-import snakeGame
-import trickycounter
-from bank_program import MyBank
+from BankApplication.bank_program import MyBank
 
 
-def hello_world(text: str) -> None:
-    print(text)
 
 
-def main() -> None:
-    # trickycounter.tricky_counter_method()
-    # snakeGame.snek()
-    MyBank().mainSplash()
+def main():
+#   trickycounter.tricky_counter_method()
 
 
 if __name__ == '__main__':
