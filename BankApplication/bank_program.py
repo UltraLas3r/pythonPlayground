@@ -1,5 +1,5 @@
 import os
-from BankApplication.accountdb import AccessDB
+from BankApplication.accountdb import connect
 
 
 class MyBank:
@@ -7,8 +7,18 @@ class MyBank:
     is_running = True
     mainMenu = ''
 
-    # if input() == "p":
-    #     print({balance})
+    BANK_PROMPT = """~~~!!~-- Cool Bank Application --~!!~~~
+    
+        Please Choose from the following options:
+    
+        1) Show Balance
+        2) Make a Deposit
+        3) Make a Withdrawal.
+        4) Log out of terminal.
+        5) Access Super Secret Database info 
+    
+        Enter your selection number: 
+        """
 
     def show_balance(self):
         print(f"you have ${self.balance} available")
@@ -36,50 +46,54 @@ class MyBank:
     def withdraw(self):
         if self.balance >= 0:
             withdrawFunds = input(f"You have {self.balance} would you like to withdrawal funds? y or n")
+            main_menu = input("Return to main menu? y or n: ")
             if withdrawFunds == "y":
                 withdraw_amount = int(input("Enter amount to withdrawal: "))
                 if self.balance - withdraw_amount >= 0:
                     self.balance -= withdraw_amount
                     print(f"Your new balance is {self.balance}")
                     main_menu = input("Return to main menu? y or n: ")
-                else:
+                if self.balance < withdraw_amount:
                     print("You cannot withdraw more than you have")
-
-            else:
-                print("please enter a proper input value")
-                self.withdraw()
-
+                else:
+                    print("please enter a proper input value")
+                    self.withdraw()
             if main_menu == "y":
                 self.mainSplash()
             else:
                 self.withdraw()
 
     def mainSplash(self):
-        print("~~~~~> Banking Program <~~~~~~")
-        print("1. Show Balance")
-        print("2. Deposit")
-        print("3. Withdraw")
-        print("4. Exit")
-        print("5. access db")
+        while (user_input := input(self.BANK_PROMPT)) != "5":
+            if user_input == '1':
+                self.show_balance()
 
-        choice = input("Enter your choice (1-4): ")
+            elif user_input == '2':
+                self.deposit()
 
-        if choice == '1':
-            self.show_balance()
+            elif user_input == '3':
+                self.withdraw()
 
-        elif choice == '2':
-            self.deposit()
+            elif user_input == '4':
+                os.system('cls')
+                is_running = False
 
-        elif choice == '3':
-            self.withdraw()
+            elif user_input == '5':
+                print("you finna access db info!")
+                # connect().get_info('account')
+                connect().get_info('balance')
 
-        elif choice == '4':
-            os.system('cls')
-            is_running = False
+            else:
+                print("That is an invalid choice")
 
-        elif choice == '5':
-            # AccessDB().get_info('account')
-           AccessDB().get_info('balance')
+    def show_balance_prompt1(self):
+        pass
 
-        else:
-            print("That is an invalid choice")
+    def make_deposit_prompt2(self):
+        pass
+
+    def make_withdrawal_prompt3(self):
+        pass
+
+    def open_new_account_prompt(self):
+        pass
