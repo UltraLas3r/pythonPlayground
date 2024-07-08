@@ -17,19 +17,18 @@ class MyBank:
         4) Log out of terminal.
         5) Access Super Secret Database info 
     
-        Enter your selection number: 
-        """
+        Enter your selection number: """
 
     def show_balance(self):
         print(f"you have ${self.balance} available")
-        mainMenu = input("Return to main menu? y or n")
+        mainMenu = input("Return to main menu? y or n: ")
 
         if mainMenu == "y":
             self.mainSplash()
         elif mainMenu == "n":
             self.show_balance()
         else:
-            print("That is an invalid choice")
+            print("\n \n!! please enter a proper input value !! : ")
 
     def deposit(self):
         deposit_amount = int(input("Enter amount to deposit: "))
@@ -37,7 +36,7 @@ class MyBank:
             self.balance += deposit_amount
             print("Your new balance is %s" % self.balance)
 
-            mainMenu = input("Return to main menu? y or n")
+            mainMenu = input("\n \nReturn to main menu? y or n: ")
             if mainMenu == "y":
                 self.mainSplash()
             else:
@@ -45,19 +44,20 @@ class MyBank:
 
     def withdraw(self):
         if self.balance >= 0:
-            withdrawFunds = input(f"You have {self.balance} would you like to withdrawal funds? y or n")
-            main_menu = input("Return to main menu? y or n: ")
+            withdrawFunds = input(f"You have {self.balance} would you like to withdrawal funds? y or n: ")
             if withdrawFunds == "y":
                 withdraw_amount = int(input("Enter amount to withdrawal: "))
                 if self.balance - withdraw_amount >= 0:
                     self.balance -= withdraw_amount
                     print(f"Your new balance is {self.balance}")
-                    main_menu = input("Return to main menu? y or n: ")
+                    main_menu = input("\n \nReturn to main menu? y or n: ")
                 if self.balance < withdraw_amount:
-                    print("You cannot withdraw more than you have")
+                    print("\n You cannot withdraw more than you have \n")
                 else:
-                    print("please enter a proper input value")
+                    print("\n \n!! please enter a proper input value !! : ")
                     self.withdraw()
+
+            main_menu = input("\n Withdrawa3l Complete \n Return to main menu? y or n: ")
             if main_menu == "y":
                 self.mainSplash()
             else:
@@ -84,7 +84,7 @@ class MyBank:
                 connect().get_info('balance')
 
             else:
-                print("That is an invalid choice")
+                print("\n !! please enter a proper input value !! : \n")
 
     def show_balance_prompt1(self):
         pass
