@@ -57,7 +57,7 @@ class MyBank:
                     print("\n \n!! please enter a proper input value !! : ")
                     self.withdraw()
 
-            main_menu = input("\n Withdrawa3l Complete \n Return to main menu? y or n: ")
+            main_menu = input("\n Withdrawal Complete \n Return to main menu? y or n: ")
             if main_menu == "y":
                 self.mainSplash()
             else:
