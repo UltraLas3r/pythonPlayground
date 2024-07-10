@@ -1,8 +1,8 @@
 from BankApplication.bank_program import MyBank
-from Leet.lists import WorkingWithLists
+from Leet.lists import WorkingWithDataStructures
 
 
 def LeetMain():
-    WorkingWithLists()
+    WorkingWithDataStructures().dictionaries()
 
 
