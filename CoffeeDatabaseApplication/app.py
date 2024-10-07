@@ -15,6 +15,7 @@ Enter your selection number:
 
 
 def menu():
+    print(MENU_PROMPT)
     connection = database.connect()
     database.create_tables(connection)
 
