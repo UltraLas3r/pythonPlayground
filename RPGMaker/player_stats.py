@@ -47,6 +47,7 @@ def pick_sub_class(choice):
     sub_class_map = {
         "melee": sub_class_array[0]
     }
+
     if choice == 1:
         print(f"Melee characters can specialize in the following sub classes:\n "
               f"1. {sub_class_array[0][0]}\n",
